@@ -1,5 +1,10 @@
 from random import *
 
+from weapon.ChocolateBar import ChocolateBar
+from weapon.HersheyKisses import HersheyKisses
+from weapon.NerdBomb import NerdBomb
+from weapon.SourStraw import SourStraw
+
 class Player():
     """Player of the game."""
 
@@ -8,7 +13,25 @@ class Player():
         self.name = name
         self.hp = randint(100, 125)
         self.attack = randint(10, 20)
-        self.weapons = [0 for i in range(10)]
+        self.inventory = self.setup_weapons()
+
+
+    def setup_weapons(self):
+        """Initialize weapon inventory at random with the
+        exception that the first weapon is always a HersheyKiss"""
+        self.weapons = [self.numb_to_weapon(randint(2, 4)) for i in range(9)]
+        self.weapons.insert(0, HersheyKisses())
+        return self.weapons
+
+    def numb_to_weapon(self, x):
+        """Link a value to a weapon object."""
+        weapon_val = {
+            2: SourStraw(),
+            3: ChocolateBar(),
+            4: NerdBomb(),
+        }
+        return weapon_val.get(x, HersheyKisses())
+
 
     def display(self):
         """Test everything is working."""
@@ -16,4 +39,5 @@ class Player():
         print(self.name)
         print(self.hp)
         print(self.attack)
-        print(self.weapons)
+        for item in self.inventory:
+            print(item.get_name())
