@@ -1,4 +1,5 @@
 from Neighborhood import Neighborhood
+from Player import Player
 
 
 class Game():
@@ -8,5 +9,6 @@ class Game():
         """Initialize neighborhood and player."""
         self.neighborhood = Neighborhood(5 , 10)
         self.neighborhood.display()
-        #self.player = Player
+        self.player = Player("Kasey")
+        self.player.display()
         #population = ...
