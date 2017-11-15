@@ -3,9 +3,9 @@ from Home import Home
 class Neighborhood():
     """A neighborhood filled with homes on a grid."""
 
-    def __init__(self, width, height):
+    def __init__(self, width, height, game):
         """Initialize house grid."""
-        self.housing_grid = [[Home() for y in range(width)] for x in range(height)]
+        self.housing_grid = [[Home(game) for y in range(width)] for x in range(height)]
 
     def get_population(self):
         """Find the population of the neighborhood."""

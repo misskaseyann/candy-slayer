@@ -6,4 +6,4 @@ class SourStraw(Weapon):
 
     def __init__(self):
         """Initialize the weapon."""
-        super(SourStraw, self).__init__("Sour Straw", random.uniform(1, 1.75), 2)
+        super().__init__("Sour Straw", random.uniform(1, 1.75), 2)

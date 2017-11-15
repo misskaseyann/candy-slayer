@@ -17,7 +17,3 @@ class Weapon():
     def get_attack_mod(self):
         """Returns the attack modifier."""
         return self.attack_mod
-
-    def get_name(self):
-        """Returns the weapon name."""
-        return self.name

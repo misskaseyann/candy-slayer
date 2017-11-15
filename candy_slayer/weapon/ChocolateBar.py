@@ -6,4 +6,4 @@ class ChocolateBar(Weapon):
 
     def __init__(self):
         """Initialize the weapon."""
-        super(ChocolateBar, self).__init__("Chocolate Bar", random.uniform(2, 2.4), 4)
+        super().__init__("Chocolate Bar", random.uniform(2, 2.4), 4)

@@ -6,4 +6,4 @@ class NerdBomb(Weapon):
 
     def __init__(self):
         """Initialize the weapon."""
-        super(NerdBomb, self).__init__("Nerd Bomb", random.uniform(3.5, 5), 1)
+        super().__init__("Nerd Bomb", random.uniform(3.5, 5), 1)

@@ -15,7 +15,6 @@ class Player():
         self.attack = randint(10, 20)
         self.inventory = self.setup_weapons()
 
-
     def setup_weapons(self):
         """Initialize weapon inventory at random with the
         exception that the first weapon is always a HersheyKiss"""
@@ -24,14 +23,14 @@ class Player():
         return self.weapons
 
     def numb_to_weapon(self, x):
-        """Link a value to a weapon object."""
+        """Link a value to a weapon object. A helper function to
+        the initialization of the players random inventory."""
         weapon_val = {
             2: SourStraw(),
             3: ChocolateBar(),
             4: NerdBomb(),
         }
         return weapon_val.get(x, HersheyKisses())
-
 
     def display(self):
         """Test everything is working."""
@@ -40,4 +39,4 @@ class Player():
         print(self.hp)
         print(self.attack)
         for item in self.inventory:
-            print(item.get_name())
+            print(item.name)
