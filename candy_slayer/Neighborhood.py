@@ -5,7 +5,9 @@ class Neighborhood():
 
     def __init__(self, width, height):
         """Initialize house grid."""
-        self.housing_grid = [[Home() for y in range(width)] for x in range(height)]
+        self.width = width
+        self.height = height
+        self.housing_grid = [[Home() for y in range(self.width)] for x in range(self.height)]
 
     def get_population(self):
         """Find the population of the neighborhood."""
