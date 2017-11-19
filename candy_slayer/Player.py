@@ -11,9 +11,11 @@ class Player():
     def __init__(self, name):
         """Initialize stats and inventory."""
         self.name = name
-        self.hp = randint(100, 125)
+        self.hpmax = randint(100, 125)
+        self.currhp = self.hpmax
         self.attack = randint(10, 20)
         self.inventory = self.setup_weapons()
+        self.currweapon = self.inventory[0]
 
 
     def setup_weapons(self):

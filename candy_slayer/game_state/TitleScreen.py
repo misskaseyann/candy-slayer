@@ -17,7 +17,6 @@ class TitleScreen(GameState):
             self.quit = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
-                self.persist["screen_color"] = "black"
                 self.done = True
 
     def draw(self, surface):

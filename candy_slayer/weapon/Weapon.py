@@ -1,11 +1,12 @@
 class Weapon():
     """Basic weapon."""
 
-    def __init__(self, name, attack_mod, num_uses):
+    def __init__(self, name, attack_mod, num_uses, img):
         """Initialize weapon stats."""
         self.name = name
         self.attack_mod = attack_mod
         self.num_uses = num_uses
+        self.img = img
 
     def is_usable(self):
         """Checks if weapon is past its usage."""
