@@ -12,7 +12,7 @@ class Home(Observer):
 
     def __init__(self):
         """Initialize monsters inside the house."""
-        self.monsters = [self.numb_to_monster(randint(1, 5)) for i in range(10)]
+        self.monsters = [self.numb_to_monster(randint(1, 5)) for i in range(randint(1, 10))]
 
     def get_population(self):
         """Give the population of the house."""
