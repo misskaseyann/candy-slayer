@@ -1,9 +1,9 @@
 from random import *
 
-from weapon.ChocolateBar import ChocolateBar
-from weapon.HersheyKisses import HersheyKisses
-from weapon.NerdBomb import NerdBomb
-from weapon.SourStraw import SourStraw
+from candy_slayer.weapon.ChocolateBar import ChocolateBar
+from candy_slayer.weapon.HersheyKisses import HersheyKisses
+from candy_slayer.weapon.NerdBomb import NerdBomb
+from candy_slayer.weapon.SourStraw import SourStraw
 
 
 class Player:

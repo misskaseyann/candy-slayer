@@ -1,4 +1,4 @@
-from observed.Observable import Observable
+from candy_slayer.observed.Observable import Observable
 
 
 class Monster(object):

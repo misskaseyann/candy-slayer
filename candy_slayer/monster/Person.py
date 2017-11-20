@@ -1,7 +1,7 @@
 import os
 import pygame
 
-from monster.Monster import Monster
+from candy_slayer.monster.Monster import Monster
 
 
 class Person(Monster):

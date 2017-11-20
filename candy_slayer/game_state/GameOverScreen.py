@@ -1,7 +1,7 @@
 import os
 import pygame
 
-from game_state.GameState import GameState
+from candy_slayer.game_state.GameState import GameState
 
 
 class GameOverScreen(GameState):

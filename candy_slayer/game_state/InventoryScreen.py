@@ -1,7 +1,7 @@
 import pygame
 import os
 
-from game_state.GameState import GameState
+from candy_slayer.game_state.GameState import GameState
 
 
 class InventoryScreen(GameState):

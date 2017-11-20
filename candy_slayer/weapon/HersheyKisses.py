@@ -1,7 +1,7 @@
 import os
 import pygame
 
-from weapon.Weapon import Weapon
+from candy_slayer.weapon.Weapon import Weapon
 
 
 class HersheyKisses(Weapon):
