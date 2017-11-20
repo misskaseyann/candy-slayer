@@ -5,9 +5,16 @@ from game_state.GameState import GameState
 
 class TitleScreen(GameState):
     """
-    Title font: Alagard
+    Title game state.
+
+    Font credit: Alagard @ https://www.dafont.com/alagard.font
     """
     def __init__(self, manager):
+        """
+        Initialize the title game state.
+
+        :param manager: game object manager
+        """
         super().__init__(manager)
         self.title_img = pygame.image.load(os.path.join("candy_slayer/assets/", "maintitle.png")).convert()
         self.next_state = "NEIGHBORHOOD"
@@ -16,9 +23,16 @@ class TitleScreen(GameState):
         self.need_inst = True
 
     def get_event(self, event):
+        """
+        Event handling during the state.
+
+        :param event: event to handle
+        """
+        # If player exits, quit the game.
         if event.type == pygame.QUIT:
             self.quit = True
         elif event.type == pygame.KEYDOWN:
+            # Enter button advances player to the instruction screen the first time, the game a second time.
             if event.key == pygame.K_RETURN:
                 if self.need_inst:
                     self.title_img = pygame.image.load(os.path.join("candy_slayer/assets/", "howto.png")).convert()
@@ -28,4 +42,9 @@ class TitleScreen(GameState):
                     self.done = True
 
     def draw(self, surface):
-        surface.blit(pygame.transform.scale(self.title_img, (600,540)), (0,0))
+        """
+        Surface the game objects are drawn on.
+
+        :param surface: game screen
+        """
+        surface.blit(pygame.transform.scale(self.title_img, (600, 540)), (0, 0))

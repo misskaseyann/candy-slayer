@@ -5,11 +5,15 @@ from weapon.HersheyKisses import HersheyKisses
 from weapon.NerdBomb import NerdBomb
 from weapon.SourStraw import SourStraw
 
-class Player():
-    """Player of the game."""
 
+class Player:
+    """Player of the game."""
     def __init__(self, name):
-        """Initialize stats and inventory."""
+        """
+        Initialize stats and inventory.
+
+        :param name: name of player
+        """
         self.name = name
         self.hpmax = randint(100, 125)
         self.currhp = self.hpmax
@@ -19,13 +23,16 @@ class Player():
         self.currhouse = None
 
     def setup_weapons(self):
-        """Initialize weapon inventory at random with the
-        exception that the first weapon is always a HersheyKiss"""
+        """
+        Initialize weapon inventory at random with the
+        exception that the first weapon is always a HersheyKiss.
+        """
         self.weapons = [self.numb_to_weapon(randint(2, 4)) for i in range(9)]
         self.weapons.insert(0, HersheyKisses())
         return self.weapons
 
-    def numb_to_weapon(self, x):
+    @staticmethod
+    def numb_to_weapon(x):
         """Link a value to a weapon object."""
         weapon_val = {
             2: SourStraw(),
@@ -35,6 +42,11 @@ class Player():
         return weapon_val.get(x, HersheyKisses())
 
     def attack_monsters(self, monsters):
+        """
+        Attack all monsters in a house.
+
+        :param monsters: list of monsters in a house
+        """
         if self.currweapon.name == "Hershey Kisses":
             for monster in monsters:
                 monster.hit(self.attack * self.currweapon.attack_mod)

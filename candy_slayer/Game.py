@@ -1,12 +1,7 @@
-from Neighborhood import Neighborhood
-from Player import Player
 import pygame
-from random import *
-
-from observed.Observer import Observer
 
 
-class Game(Observer):
+class Game(object):
     """
     Manages individual game states, the pygame logic,
     and the game loop.
@@ -14,10 +9,9 @@ class Game(Observer):
     Re-worked from the original code by iminurnamez
     at https://gist.github.com/iminurnamez/8d51f5b40032f106a847
     """
-
     def __init__(self, screen, states, start_state):
         """
-        Initialize the Game object.
+        Initialize the Game.
 
         :param screen: the pygame display surface
         :param states: a dict mapping state-names to GameState objects
@@ -38,7 +32,6 @@ class Game(Observer):
 
     def flip_state(self):
         """Switch to the next game state."""
-        current_state = self.state_name
         next_state = self.state.next_state
         self.state.done = False
         self.state_name = next_state
