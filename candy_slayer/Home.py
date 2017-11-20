@@ -39,7 +39,11 @@ class Home(Observer):
                 self.observable.update_observers()
 
     def numb_to_monster(self, x):
-        """Link a value to a monster object."""
+        """
+        Link a value to a monster object.
+
+        :param x: random integer
+        """
         monster_val = {
             1: Person(self),
             2: Zombie(self),
