@@ -16,7 +16,7 @@ class Player():
         self.attack = randint(10, 20)
         self.inventory = self.setup_weapons()
         self.currweapon = self.inventory[0]
-
+        self.currhouse = None
 
     def setup_weapons(self):
         """Initialize weapon inventory at random with the
@@ -34,12 +34,11 @@ class Player():
         }
         return weapon_val.get(x, HersheyKisses())
 
-
-    def display(self):
-        """Test everything is working."""
-        print("Testing Player class.")
-        print(self.name)
-        print(self.hp)
-        print(self.attack)
-        for item in self.inventory:
-            print(item.get_name())
+    def attack_monsters(self, monsters):
+        if self.currweapon.name == "Hershey Kisses":
+            for monster in monsters:
+                monster.hit(self.attack * self.currweapon.attack_mod)
+        elif self.currweapon.is_usable():
+            for monster in monsters:
+                monster.hit(self.attack * self.currweapon.attack_mod)
+            self.currweapon.num_uses -= 1

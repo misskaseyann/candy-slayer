@@ -1,13 +1,15 @@
 from Home import Home
+from monster.Person import Person
+
 
 class Neighborhood():
     """A neighborhood filled with homes on a grid."""
 
-    def __init__(self, width, height):
+    def __init__(self, width, height, manager):
         """Initialize house grid."""
         self.width = width
         self.height = height
-        self.housing_grid = [[Home() for y in range(self.width)] for x in range(self.height)]
+        self.housing_grid = [[Home(manager) for y in range(self.width)] for x in range(self.height)]
 
     def get_population(self):
         """Find the population of the neighborhood."""

@@ -3,8 +3,10 @@ from Player import Player
 import pygame
 from random import *
 
+from observed.Observer import Observer
 
-class Game(object):
+
+class Game(Observer):
     """
     Manages individual game states, the pygame logic,
     and the game loop.

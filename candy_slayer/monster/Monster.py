@@ -1,18 +1,18 @@
 from observed.Observable import Observable
 
-class Monster(Observable):
+class Monster():
     """Basic non player character."""
 
-    def __init__(self, hp, house, name):
+    def __init__(self, hp, house, name, img):
+        self.maxhp = hp
         self.hp = hp
         self.name = name
         self.observable = Observable()
         self.observable.register(house)
-        #self.observable.register(house)
+        self.monsterimg = img
 
-
-    def attack(self):
-        return 0
+    def attack(self, player):
+        pass
 
     def hit(self, attack_val):
         self.hp -= attack_val

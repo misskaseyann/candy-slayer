@@ -3,9 +3,12 @@ import pygame
 
 from Manager import Manager
 from candy_slayer.Game import Game
+from game_state.BattleScreen import BattleScreen
+from game_state.GameOverScreen import GameOverScreen
 from game_state.InventoryScreen import InventoryScreen
 from game_state.NeighborhoodScreen import NeighborhoodScreen
 from game_state.TitleScreen import TitleScreen
+from game_state.WinningScreen import WinningScreen
 
 if __name__ == "__main__":
     pygame.init()
@@ -14,7 +17,10 @@ if __name__ == "__main__":
     manager = Manager()
     states = {"TITLE": TitleScreen(manager),
               "NEIGHBORHOOD": NeighborhoodScreen(manager),
-              "INVENTORY": InventoryScreen(manager)}
+              "INVENTORY": InventoryScreen(manager),
+              "BATTLE": BattleScreen(manager),
+              "GAMEOVER": GameOverScreen(manager),
+              "WINNER": WinningScreen(manager)}
     game = Game(screen, states, "TITLE")
     manager.add_game(game)
     game.run()

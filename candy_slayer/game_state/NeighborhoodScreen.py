@@ -13,10 +13,10 @@ class NeighborhoodScreen(GameState):
         self.playery = (300 - ((self.neighborhoody * 80) / 2))
         self.housex = 0
         self.housey = 0
-        pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "eerieloop.wav"))
-        pygame.mixer.music.play(-1)
 
     def startup(self, persistent):
+        pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "eerieloop.wav"))
+        pygame.mixer.music.play(-1)
         self.font = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 16)
         self.house_img = pygame.image.load(os.path.join("candy_slayer/assets/", "house.png")).convert_alpha()
         self.player_img = pygame.image.load(os.path.join("candy_slayer/assets/", "player.png")).convert_alpha()
@@ -45,10 +45,13 @@ class NeighborhoodScreen(GameState):
                 if self.playery < (((self.neighborhoody - 1) * 80) + (280 - ((self.neighborhoody * 80)/2))):
                     self.housey += 1
                     self.playery += 80
-            if event.key == pygame.K_ESCAPE:
-                self.persist = (self.playerx, self.playery)
-                self.next_state = "INVENTORY"
+            if event.key == pygame.K_RETURN:
+                pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "battle.wav"))
+                pygame.mixer.music.play(-1)
+                self.manager.player.currhouse = self.manager.neighborhood.housing_grid[self.housey][self.housex]
+                self.next_state = "BATTLE"
                 self.done = True
+
 
     def draw(self, surface):
         surface.fill((255, 241, 235))

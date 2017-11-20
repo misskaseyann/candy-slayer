@@ -12,7 +12,7 @@ class InventoryScreen(GameState):
         self.font1 = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 13)
         self.font2 = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 16)
         self.inv_txt = self.font2.render("Player Inventory  |  Select Weapon", True, (112, 89, 154))
-        self.x = (320 - (500)/2)
+        self.x = 70
         self.y = 120
         self.weaponsel = 0
 
@@ -20,30 +20,29 @@ class InventoryScreen(GameState):
         if event.type == pygame.QUIT:
             self.quit = True
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                self.next_state = "NEIGHBORHOOD"
-                self.done = True
             if event.key == pygame.K_d:
-                if self.x < (((len(self.manager.player.inventory)/2) - 1) * 100) + (320 - (500)/2):
+                if self.x < (((len(self.manager.player.inventory)/2) - 1) * 100) + 70:
                     self.weaponsel += 1
                     self.x += 100
+                elif self.y < 250:
+                    self.weaponsel += 1
+                    self.x = 70
+                    self.y = 250
+                else:
+                    self.weaponsel = 0
+                    self.x = 70
+                    self.y = 120
             if event.key == pygame.K_a:
-                if self.x > (320 - (500)/2):
+                if self.x > 70:
                     self.weaponsel -= 1
                     self.x -= 100
-            if event.key == pygame.K_s:
-                if self.y < 250:
-                    self.weaponsel = 6
-                    self.y += 130
-                    self.x = (320 - (500)/2)
-            if event.key == pygame.K_w:
-                if self.y > 120:
-                    self.weaponsel = 0
-                    self.y -= 130
-                    self.x = (320 - (500) / 2)
+                elif self.y > 120:
+                    self.weaponsel -= 1
+                    self.x = (((len(self.manager.player.inventory)/2) - 1) * 100) + 70
+                    self.y = 120
             if event.key == pygame.K_RETURN:
                 self.manager.player.currweapon = self.manager.player.inventory[self.weaponsel]
-                self.next_state = "NEIGHBORHOOD"
+                self.next_state = "BATTLE"
                 self.done = True
 
 
