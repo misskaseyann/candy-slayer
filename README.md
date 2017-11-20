@@ -6,6 +6,11 @@ Unfortunately, when you woke up you discovered that the world was not how you le
 ![alt text](http://i68.tinypic.com/2rzs4mw.png)
 
 ![alt text](http://i65.tinypic.com/214dx04.png)
+
+## Controls
+Move using the WASD keys.
+
+Press Enter for selecting.
 ## Credit
 ###### Music credit: 
 https://soundcloud.com/visagermusic

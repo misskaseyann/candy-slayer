@@ -17,6 +17,8 @@ class Manager(Observer):
     def add_game(self, game):
         """
         Set up a game to the class.
+
+        :param game: game object
         """
         self.game = game  # This is a for now permanent work-around so that game states initialize.
 
