@@ -150,5 +150,5 @@ class BattleScreen(GameState):
                 surface.blit(monster.monsterimg, ((index * 100) + 50, 130))
                 surface.blit(self.hp_text, ((index * 100) + 50, 110))
             else:
-                surface.blit(monster.monsterimg, (((index - 5) * 100) - 90, 300))
-                surface.blit(self.hp_text, (((index - 5) * 100) - 90, 280))
+                surface.blit(monster.monsterimg, (((index - 5) * 100) + 70, 300))
+                surface.blit(self.hp_text, (((index - 5) * 100) + 70, 280))
