@@ -88,19 +88,19 @@ class InventoryScreen(GameState):
                                               (self.manager.player.attack * item.attack_mod), True, (112, 89, 154))
             self.item_uses = self.font1.render("Uses: " + str(item.num_uses), True, (112, 89, 154))
             if index < 5:
-                surface.blit(item.img, ((index * 100) - 90, 120))
+                surface.blit(item.img, ((index * 100) + 70, 120))
                 surface.blit(self.item_text,
-                             ((index * 100) - 90, 190))
+                             ((index * 100) + 70, 190))
                 surface.blit(self.item_atk,
-                             ((index * 100) - 90, 205))
+                             ((index * 100) + 70, 205))
                 surface.blit(self.item_uses,
-                             ((index * 100) - 90, 218))
+                             ((index * 100) + 70, 218))
             else:
-                surface.blit(item.img, (((index - 5) * 100) - 90, 250))
+                surface.blit(item.img, (((index - 5) * 100) + 70, 250))
                 surface.blit(self.item_text,
-                             (((index - 5) * 100) - 90, 320))
+                             (((index - 5) * 100) + 70, 320))
                 surface.blit(self.item_atk,
-                             (((index - 5) * 100) - 90, 335))
+                             (((index - 5) * 100) + 70, 335))
                 surface.blit(self.item_uses,
-                             (((index - 5) * 100) - 90, 348))
+                             (((index - 5) * 100) + 70, 348))
         pygame.draw.rect(surface, (112, 89, 154), (self.x, self.y, 68, 68), 5)
