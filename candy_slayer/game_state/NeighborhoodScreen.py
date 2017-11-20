@@ -13,10 +13,10 @@ class NeighborhoodScreen(GameState):
         self.playery = (300 - ((self.neighborhoody * 80) / 2))
         self.housex = 0
         self.housey = 0
-        pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "eerieloop.wav"))
-        pygame.mixer.music.play(-1)
 
     def startup(self, persistent):
+        pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "eerieloop.wav"))
+        pygame.mixer.music.play(-1)
         self.font = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 16)
         self.house_img = pygame.image.load(os.path.join("candy_slayer/assets/", "house.png")).convert_alpha()
         self.player_img = pygame.image.load(os.path.join("candy_slayer/assets/", "player.png")).convert_alpha()

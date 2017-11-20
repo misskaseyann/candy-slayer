@@ -19,6 +19,7 @@ class BattleScreen(GameState):
         self.esc_color = (225, 149, 168)
         self.menu_num = 0
         self.curr_event = " "
+        self.player_event = " "
 
     def get_event(self, event):
         if event.type == pygame.QUIT:
@@ -53,7 +54,11 @@ class BattleScreen(GameState):
                     elif self.house.get_population() == 0:
                         self.curr_event = "You saved the household. Time to move on..."
                     else:
-                        self.manager.player.attack_monsters(self.house.monsters)
+                        if self.manager.player.currweapon.num_uses == 0:
+                            self.player_event = "The " + str(self.manager.player.currweapon.name) + " is unusable!"
+                        else:
+                            self.manager.player.attack_monsters(self.house.monsters)
+                            self.player_event = "You attack with the " + str(self.manager.player.currweapon.name) + "..."
                         random = randint(0, len(self.house.monsters)) - 1
                         self.house.monsters[random].attack(self.manager.player)
                         if self.house.monsters[random].name == "Person":
@@ -80,11 +85,13 @@ class BattleScreen(GameState):
                                              "  |  Weapon: " + str(self.manager.player.currweapon.get_name()),
                                              True, (112, 89, 154))
         self.event_txt = self.font1.render(self.curr_event, True, (112, 89, 154))
+        self.player_txt = self.font1.render(self.player_event, True, (112, 89, 154))
         self.attack_txt = self.font2.render("Attack ", True, self.attk_color)
         self.inv_txt = self.font2.render("Inventory ", True, self.inv_color)
         self.esc_txt = self.font2.render("Escape", True, self.esc_color)
         surface.blit(self.enemies_txt, (300 - self.enemies_txt.get_width() / 2, 10))
-        surface.blit(self.event_txt, (300 - self.event_txt.get_width() /2, 60))
+        surface.blit(self.event_txt, (300 - self.event_txt.get_width() / 2, 60))
+        surface.blit(self.player_txt, (300 - self.player_txt.get_width() / 2, 40))
         surface.blit(self.attack_txt, (300 - (self.attack_txt.get_width() + self.inv_txt.get_width() +
                                               self.esc_txt.get_width()) / 2, 460))
         surface.blit(self.inv_txt, (300 - self.inv_txt.get_width() / 2, 460))

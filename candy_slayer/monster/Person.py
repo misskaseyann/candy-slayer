@@ -13,8 +13,8 @@ class Person(Monster):
 
     def attack(self, player):
         """Gives the player one piece of candy
-        which increases their health by +1 points."""
-        player.currhp += 1
+        which increases their health by +10 points."""
+        player.currhp += 10
 
     def hit(self, attack_val):
         """Do nothing because they are not harmed by

@@ -11,6 +11,10 @@ class GameOverScreen(GameState):
         super().__init__(manager)
         self.title_img = pygame.image.load(os.path.join("candy_slayer/assets/", "gameover.png")).convert()
 
+    def startup(self, persistent):
+        pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "gameover.wav"))
+        pygame.mixer.music.play(0)
+
     def get_event(self, event):
         if event.type == pygame.QUIT:
             self.quit = True
