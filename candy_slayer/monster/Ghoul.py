@@ -1,5 +1,8 @@
 from random import *
 
+import os
+import pygame
+
 from monster.Monster import Monster
 
 
@@ -9,7 +12,9 @@ class Ghoul(Monster):
     """
     def __init__(self, house):
         """Initializes the Ghoul monster."""
-        super().__init__(randint(40, 80), house, "Ghoul")
+        super().__init__(randint(40, 80), house, "Ghoul",
+                         pygame.image.load(os.path.join("candy_slayer/assets/",
+                                                        "ghoul.png")).convert_alpha())
 
-    def attack(self):
-        return randint(15, 30)
+    def attack(self, player):
+        player.currhp -= randint(15, 30)
