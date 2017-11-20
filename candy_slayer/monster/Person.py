@@ -5,17 +5,32 @@ from monster.Monster import Monster
 
 
 class Person(Monster):
-    """Person and helper character."""
+    """
+    Person and helper character.
+
+    Image source by r1k at: http://pixeljoint.com/pixelart/63772.htm
+    """
     def __init__(self, house):
-        """Initialize the Person stats."""
+        """
+        Initialize the person.
+
+        :param house: home that the person is attached to
+        """
         super().__init__(100, 0, "Person", pygame.image.load(os.path.join("candy_slayer/assets/",
                                                                           "person.png")).convert_alpha())
 
     def attack(self, player):
-        """Gives the player one piece of candy
-        which increases their health by +10 points."""
+        """
+        Gives the player candy which offers +10 health points.
+
+        :param player: player object receiving health
+        """
         player.currhp += 10
 
     def hit(self, attack_val):
-        """Do nothing because they are not harmed by
-        candy weapons."""
+        """
+        Do nothing because the player gets help from persons.
+
+        :param attack_val: zero value
+        """
+        pass

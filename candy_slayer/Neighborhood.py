@@ -1,12 +1,16 @@
 from Home import Home
-from monster.Person import Person
 
 
-class Neighborhood():
+class Neighborhood:
     """A neighborhood filled with homes on a grid."""
-
     def __init__(self, width, height, manager):
-        """Initialize house grid."""
+        """
+        Initialize the house grid.
+
+        :param width: width of the game grid
+        :param height: height of the game grid
+        :param manager: game object manager
+        """
         self.width = width
         self.height = height
         self.housing_grid = [[Home(manager) for y in range(self.width)] for x in range(self.height)]
@@ -16,14 +20,5 @@ class Neighborhood():
         x = 0
         for row in self.housing_grid:
             for item in row:
-                x += item.get_population()
+                x += item.get_population
         return x
-
-    def display(self):
-        """Test that grid is initializing properly."""
-        print("Testing Neighborhood class.")
-        for row in self.housing_grid:
-            for item in row:
-                item.display()
-            print("")
-        print("Neighborhood size: ", self.get_population())

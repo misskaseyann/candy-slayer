@@ -4,8 +4,16 @@ import pygame
 class GameState(object):
     """
     Parent class for individual game states to inherit from.
+
+    Re-worked from the original code by iminurnamez
+    at https://gist.github.com/iminurnamez/8d51f5b40032f106a847
     """
     def __init__(self, manager):
+        """
+        Initialize the game state.
+
+        :param manager: game object manager
+        """
         self.manager = manager
         self.done = False
         self.quit = False
@@ -26,6 +34,7 @@ class GameState(object):
     def get_event(self, event):
         """
         Handle a single event passed by the Game object.
+
         :param event: pygame event
         """
         pass
