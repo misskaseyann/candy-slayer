@@ -9,7 +9,9 @@ Unfortunately, when you woke up you discovered that the world was not how you le
 ## Credit
 ###### Music credit: 
 https://soundcloud.com/visagermusic
-######Image credit: 
+
+###### Image credit: 
 http://pixeljoint.com/pixelart/63772.htm
-######Font credit:
+
+###### Font credit:
 https://www.dafont.com/alagard.font
