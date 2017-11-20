@@ -1,12 +1,12 @@
 from random import *
 
-from monster.Ghoul import Ghoul
-from monster.Person import Person
-from monster.Vampire import Vampire
-from monster.Werewolf import Werewolf
-from monster.Zombie import Zombie
-from observed.Observer import Observer
-from observed.Observable import Observable
+from candy_slayer.monster.Ghoul import Ghoul
+from candy_slayer.monster.Person import Person
+from candy_slayer.monster.Vampire import Vampire
+from candy_slayer.monster.Werewolf import Werewolf
+from candy_slayer.monster.Zombie import Zombie
+from candy_slayer.observed.Observer import Observer
+from candy_slayer.observed.Observable import Observable
 
 
 class Home(Observer):

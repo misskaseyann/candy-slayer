@@ -1,8 +1,8 @@
 from random import randint
 
-from Neighborhood import Neighborhood
-from Player import Player
-from observed.Observer import Observer
+from candy_slayer.Neighborhood import Neighborhood
+from candy_slayer.Player import Player
+from candy_slayer.observed.Observer import Observer
 
 
 class Manager(Observer):

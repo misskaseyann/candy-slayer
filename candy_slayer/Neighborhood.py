@@ -1,4 +1,4 @@
-from Home import Home
+from candy_slayer.Home import Home
 
 
 class Neighborhood:

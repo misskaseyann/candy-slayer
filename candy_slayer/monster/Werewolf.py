@@ -3,7 +3,7 @@ from random import *
 import os
 import pygame
 
-from monster.Monster import Monster
+from candy_slayer.monster.Monster import Monster
 
 
 class Werewolf(Monster):
