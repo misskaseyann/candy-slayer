@@ -22,6 +22,38 @@ class GameState(object):
         self.persist = {}
         self.font = pygame.font.Font(None, 24)
 
+    def can_quit(self):
+        """
+        Getter for the boolean quit variable.
+
+        :return: true if the game can quit.
+        """
+        return self.quit
+
+    def is_done(self):
+        """
+        Getter for the boolean done variable.
+
+        :return: true if the state is done.
+        """
+        return self.done
+
+    def set_done(self, done):
+        """
+        Setter for the boolean done variable.
+
+        :param done: boolean value for if the state is done.
+        """
+        self.done = done
+
+    def get_persist(self):
+        """
+        Getter for the persistent data.
+
+        :return: persist dict with data to be passed.
+        """
+        return self.persist
+
     def startup(self, persistent):
         """
         Called when a state resumes being active.

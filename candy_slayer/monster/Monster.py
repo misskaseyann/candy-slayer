@@ -19,6 +19,38 @@ class Monster(object):
         self.observable.register(house)
         self.monsterimg = img
 
+    def get_monsterimg(self):
+        """
+        Getter for monster image.
+
+        :return: a png image representation of the monster.
+        """
+        return self.monsterimg
+
+    def get_maxhp(self):
+        """
+        Getter for the monsters max hp.
+
+        :return: the integer value of monsters max hp.
+        """
+        return self.maxhp
+
+    def get_hp(self):
+        """
+        Getter for the monster hp.
+
+        :return: the current floating point hp of the monster.
+        """
+        return self.hp
+
+    def get_name(self):
+        """
+        Getter for the monster name.
+
+        :return: string of a monster name.
+        """
+        return self.name
+
     def attack(self, player):
         """
         Monster attack.

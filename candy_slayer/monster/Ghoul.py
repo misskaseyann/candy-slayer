@@ -28,4 +28,4 @@ class Ghoul(Monster):
 
         :param player: player the attack is aimed towards
         """
-        player.currhp -= randint(15, 30)
+        player.set_currhp(player.get_currhp() - randint(15, 30))
