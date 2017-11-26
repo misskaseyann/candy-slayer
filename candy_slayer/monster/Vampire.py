@@ -27,4 +27,4 @@ class Vampire(Monster):
 
         :param player: player object that the monster attacks
         """
-        player.currhp -= randint(10, 20)
+        player.set_currhp(player.get_currhp() - randint(10, 20))

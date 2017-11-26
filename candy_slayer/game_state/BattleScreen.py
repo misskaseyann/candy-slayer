@@ -28,7 +28,7 @@ class BattleScreen(GameState):
 
         :param persistent: dictionary object
         """
-        self.house = self.manager.player.currhouse
+        self.house = self.manager.get_player().get_currhouse()
         self.font1 = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 16)
         self.font2 = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 40)
         self.attk_color = (110, 84, 157)
@@ -75,32 +75,34 @@ class BattleScreen(GameState):
                 # Attack menu option.
                 if self.menu_num == 0:
                     # Check if we won the game.
-                    if self.manager.neighborhood.get_population == 0:
+                    if self.manager.get_neighborhood().get_population() == 0:
                         pygame.mixer.music.stop()
                         self.next_state = "WINNER"
                         self.done = True
                     # Check if we saved the people in the house.
-                    elif self.house.get_population == 0:
+                    elif self.house.get_population() == 0:
                         self.curr_event = "You saved the household. Time to move on..."
                     else:
                         # Check if the weapon has any more usage.
-                        if self.manager.player.currweapon.num_uses == 0:
-                            self.player_event = "The " + str(self.manager.player.currweapon.name) + " is unusable!"
-                        # Attack monsters in the house.
+                        if self.manager.get_player().get_currweapon().get_num_uses() == 0:
+                            self.player_event = "The " + str(self.manager.get_player().get_currweapon().get_name()) + \
+                                                " is unusable!"
+                        # Attack monsters in the house. self.manager.player.currweapon.name
                         else:
-                            self.manager.player.attack_monsters(self.house.monsters)
-                            self.player_event = "You attack with the " + str(self.manager.player.currweapon.name) \
-                                                + "..."
-                        random = randint(0, len(self.house.monsters)) - 1
-                        self.house.monsters[random].attack(self.manager.player)
+                            self.manager.get_player().attack_monsters(self.house.get_monsters())
+                            self.player_event = "You attack with the " + \
+                                                str(self.manager.get_player().get_currweapon().get_name()) + "..."
+                        random = randint(0, len(self.house.get_monsters())) - 1
+                        self.house.get_monsters()[random].attack(self.manager.get_player())
                         # Check if a person gives the player candy.
-                        if self.house.monsters[random].name == "Person":
-                            self.curr_event = str(self.house.monsters[random].name) + " gives the player healing candy!"
+                        if self.house.get_monsters()[random].get_name() == "Person":
+                            self.curr_event = str(self.house.get_monsters()[random].get_name()) + \
+                                              " gives the player healing candy!"
                         # Show what monster attacked the player.
                         else:
-                            self.curr_event = str(self.house.monsters[random].name) + " attacks the player!"
+                            self.curr_event = str(self.house.get_monsters()[random].get_name()) + " attacks the player!"
                         # End game if player health is 0.
-                        if self.manager.player.currhp < 1:
+                        if self.manager.get_player().get_currhp() < 1:
                             pygame.mixer.music.stop()
                             self.next_state = "GAMEOVER"
                             self.done = True
@@ -123,9 +125,10 @@ class BattleScreen(GameState):
         """
         surface.fill((255, 241, 235))
         # Top GUI text stats.
-        self.enemies_txt = self.font1.render("Monsters: " + str(self.manager.population) + "  |  Health: " +
-                                             str(self.manager.player.currhp) + "/" + str(self.manager.player.hpmax) +
-                                             "  |  Weapon: " + str(self.manager.player.currweapon.name),
+        self.enemies_txt = self.font1.render("Monsters: " + str(self.manager.get_population()) + "  |  Health: " +
+                                             str(self.manager.get_player().get_currhp()) + "/" +
+                                             str(self.manager.get_player().get_hpmax()) + "  |  Weapon: " +
+                                             str(self.manager.get_player().get_currweapon().get_name()),
                                              True, (112, 89, 154))
         # Top GUI text actions/event.
         self.event_txt = self.font1.render(self.curr_event, True, (112, 89, 154))
@@ -143,12 +146,12 @@ class BattleScreen(GameState):
         surface.blit(self.inv_txt, (300 - self.inv_txt.get_width() / 2, 460))
         surface.blit(self.esc_txt, (300 + self.inv_txt.get_width() / 2, 460))
         # Monster images display.
-        for index, monster in enumerate(self.house.monsters):
-            self.hp_text = self.font1.render("HP: " + "%.f" % monster.hp + "/" + str(monster.maxhp), True,
+        for index, monster in enumerate(self.house.get_monsters()):
+            self.hp_text = self.font1.render("HP: " + "%.f" % monster.get_hp() + "/" + str(monster.get_maxhp()), True,
                                              (112, 89, 154))
             if index < 5:
-                surface.blit(monster.monsterimg, ((index * 100) + 50, 130))
+                surface.blit(monster.get_monsterimg(), ((index * 100) + 50, 130))
                 surface.blit(self.hp_text, ((index * 100) + 50, 110))
             else:
-                surface.blit(monster.monsterimg, (((index - 5) * 100) + 70, 300))
+                surface.blit(monster.get_monsterimg(), (((index - 5) * 100) + 70, 300))
                 surface.blit(self.hp_text, (((index - 5) * 100) + 70, 280))

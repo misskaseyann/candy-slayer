@@ -11,10 +11,12 @@ from candy_slayer.game_state.TitleScreen import TitleScreen
 from candy_slayer.game_state.WinningScreen import WinningScreen
 
 if __name__ == "__main__":
+    # Initialize the game screen with a 600 x 400 size.
     pygame.init()
     screen = pygame.display.set_mode((600, 540))
     pygame.display.set_caption("Candy Slayer")
     manager = Manager()
+    # Initialize all the game states.
     states = {"TITLE": TitleScreen(manager),
               "NEIGHBORHOOD": NeighborhoodScreen(manager),
               "INVENTORY": InventoryScreen(manager),

@@ -25,7 +25,7 @@ class Person(Monster):
 
         :param player: player object receiving health
         """
-        player.currhp += 10
+        player.set_currhp(player.get_currhp() + 10)
 
     def hit(self, attack_val):
         """

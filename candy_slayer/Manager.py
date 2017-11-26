@@ -14,6 +14,30 @@ class Manager(Observer):
         self.population = self.neighborhood.get_population()
         self.player = Player("Kasey")
 
+    def get_neighborhood(self):
+        """
+        Getter for the neighborhood object.
+
+        :return: the neighborhood object.
+        """
+        return self.neighborhood
+
+    def get_player(self):
+        """
+        Getter for the player object.
+
+        :return: player of the game.
+        """
+        return self.player
+
+    def get_population(self):
+        """
+        Getter for the neighborhood population.
+
+        :return: integer value of the neighborhood population.
+        """
+        return self.population
+
     def add_game(self, game):
         """
         Set up a game to the class.

@@ -18,8 +18,8 @@ class NeighborhoodScreen(GameState):
         :param manager: game object manager
         """
         super().__init__(manager)
-        self.neighborhoodx = self.manager.neighborhood.width
-        self.neighborhoody = self.manager.neighborhood.height
+        self.neighborhoodx = self.manager.neighborhood.get_width()
+        self.neighborhoody = self.manager.neighborhood.get_height()
         self.playerx = (335 - ((self.neighborhoodx * 100) / 2))
         self.playery = (300 - ((self.neighborhoody * 80) / 2))
         self.housex = 0
@@ -37,9 +37,10 @@ class NeighborhoodScreen(GameState):
         self.font = pygame.font.Font(os.path.join("candy_slayer/assets/", "alagard.ttf"), 16)
         self.house_img = pygame.image.load(os.path.join("candy_slayer/assets/", "house.png")).convert_alpha()
         self.player_img = pygame.image.load(os.path.join("candy_slayer/assets/", "player.png")).convert_alpha()
-        self.enemies_txt = self.font.render("Monsters: " + str(self.manager.population) + "  |  Health: " +
-                                            str(self.manager.player.currhp) + "/" + str(self.manager.player.hpmax) +
-                                            "  |  Weapon: " + str(self.manager.player.currweapon.name),
+        self.enemies_txt = self.font.render("Monsters: " + str(self.manager.get_population()) + "  |  Health: " +
+                                            str(self.manager.get_player().get_currhp()) + "/" +
+                                            str(self.manager.get_player().get_hpmax()) + "  |  Weapon: " +
+                                            str(self.manager.get_player().get_currweapon().get_name()),
                                             True, (112, 89, 154))
 
     def get_event(self, event):
@@ -76,7 +77,8 @@ class NeighborhoodScreen(GameState):
             if event.key == pygame.K_RETURN:
                 pygame.mixer.music.load(os.path.join("candy_slayer/assets/", "battle.wav"))
                 pygame.mixer.music.play(-1)
-                self.manager.player.currhouse = self.manager.neighborhood.housing_grid[self.housey][self.housex]
+                self.manager.get_player().set_currhouse(
+                    self.manager.get_neighborhood().get_house(self.housey, self.housex))
                 self.next_state = "BATTLE"
                 self.done = True
 

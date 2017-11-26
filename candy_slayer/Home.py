@@ -21,19 +21,30 @@ class Home(Observer):
         self.observable.register(manager)
         self.monsters = [self.numb_to_monster(randint(1, 5)) for i in range(randint(1, 10))]
 
-    @property
+    def get_monsters(self):
+        """
+        Getter for the monsters inside the house.
+
+        :return: the list of monsters inside the house.
+        """
+        return self.monsters
+
     def get_population(self):
-        """Give the population of the house."""
+        """
+        Give the population of the house.
+
+        :return: the integer value of the population of monsters in the house.
+        """
         self.population = 0
         for monster in self.monsters:
-            if monster.name != "Person":
+            if monster.get_name() != "Person":
                 self.population += 1
         return self.population
 
     def update(self):
         """Called when a monster dies so that it can turn into a person."""
-        for i, item in enumerate(self.monsters):
-            if item.hp < 1:
+        for i, monster in enumerate(self.monsters):
+            if monster.get_hp() < 1:
                 self.monsters.pop(i)
                 self.monsters.insert(i, Person(self))
                 self.observable.update_observers()

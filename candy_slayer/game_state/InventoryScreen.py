@@ -47,7 +47,7 @@ class InventoryScreen(GameState):
         if event.type == pygame.KEYDOWN:
             # Move right if d key is pressed.
             if event.key == pygame.K_d:
-                if self.x < (((len(self.manager.player.inventory) / 2) - 1) * 100) + 70:
+                if self.x < (((len(self.manager.get_player().get_inventory()) / 2) - 1) * 100) + 70:
                     self.weaponsel += 1
                     self.x += 100
                 elif self.y < 250:
@@ -65,11 +65,11 @@ class InventoryScreen(GameState):
                     self.x -= 100
                 elif self.y > 120:
                     self.weaponsel -= 1
-                    self.x = (((len(self.manager.player.inventory) / 2) - 1) * 100) + 70
+                    self.x = (((len(self.manager.get_player().get_inventory()) / 2) - 1) * 100) + 70
                     self.y = 120
             # Select weapon with enter key.
             if event.key == pygame.K_RETURN:
-                self.manager.player.currweapon = self.manager.player.inventory[self.weaponsel]
+                self.manager.get_player().set_currweapon(self.manager.get_player().get_inventory()[self.weaponsel])
                 self.next_state = "BATTLE"
                 self.done = True
 
@@ -82,13 +82,14 @@ class InventoryScreen(GameState):
         surface.fill((255, 241, 235))
         surface.blit(self.inv_txt, (300 - self.inv_txt.get_width() / 2, 10))
         surface.blit(self.dir_txt, (300 - self.dir_txt.get_width() / 2, 30))
-        for index, item in enumerate(self.manager.player.inventory):
-            self.item_text = self.font1.render(item.name, True, (112, 89, 154))
+        for index, item in enumerate(self.manager.get_player().get_inventory()):
+            self.item_text = self.font1.render(item.get_name(), True, (112, 89, 154))
             self.item_atk = self.font1.render("Atk: " + "%.2f" %
-                                              (self.manager.player.attack * item.attack_mod), True, (112, 89, 154))
-            self.item_uses = self.font1.render("Uses: " + str(item.num_uses), True, (112, 89, 154))
+                                              (self.manager.get_player().get_attack() * item.get_attack_mod()),
+                                              True, (112, 89, 154))
+            self.item_uses = self.font1.render("Uses: " + str(item.get_num_uses()), True, (112, 89, 154))
             if index < 5:
-                surface.blit(item.img, ((index * 100) + 70, 120))
+                surface.blit(item.get_img(), ((index * 100) + 70, 120))
                 surface.blit(self.item_text,
                              ((index * 100) + 70, 190))
                 surface.blit(self.item_atk,
@@ -96,7 +97,7 @@ class InventoryScreen(GameState):
                 surface.blit(self.item_uses,
                              ((index * 100) + 70, 218))
             else:
-                surface.blit(item.img, (((index - 5) * 100) + 70, 250))
+                surface.blit(item.get_img(), (((index - 5) * 100) + 70, 250))
                 surface.blit(self.item_text,
                              (((index - 5) * 100) + 70, 320))
                 surface.blit(self.item_atk,

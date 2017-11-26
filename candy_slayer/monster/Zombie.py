@@ -29,4 +29,4 @@ class Zombie(Monster):
 
         :param player: the player the attack is directed towards.
         """
-        player.currhp -= randint(0, 10)
+        player.set_currhp(player.get_currhp() - randint(0, 10))
